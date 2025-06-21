@@ -195,3 +195,37 @@ This schema supports core platform operations including property search, booking
 
 + Direct financial impact. Insecure payments expose credit card details, enable fraudulent transactions, and violate PCI compliance - risking massive fines and loss of payment processing privileges
 + Manipulation of booking data could enable reservation fraud, double-booking scams, or service denials, we ensure booking integrity and accurate financial settlements
+
+## CI/CD Pipelines 🔄
+
+CI/CD stands for Continuous Integration and Continuous Deployment/Delivery, an automated process that enables development teams to build, test, and deploy applications rapidly and reliably. CI focuses on automatically merging code changes and running tests, while CD automates the release of validated code to production environments
+
+#### Why it is important
+
+1. `Accelerated development cycles`: Enables daily deployment of new features like enhanced search filters or payment options while maintaining system stability during peak booking seasons
+
+2. `Quality Assurance`: Automated testing catches most of the bugs before deployment, crucial for preventing financial errors in bookings and payment processing
+
+3. `Risk Mitigation`: Rollback mechanisms and canary deployments prevent system-wide outages during high-traffic events like holiday booking rushes
+
+4. `Security Compliance`: Automated security scans maintain PCI-DSS(Payment Card Industry Data Security Standard) compliance for payment handling and GDPR compliance for user data protection
+
+#### Core Tools
+
+1. `Github Actions`: Orchestrates our CI pipeline with automated workflows on every code push
+
+2. `Docker`: Containerizes our application for consistent environments from development to production
+
+3. `Kubernetes + Argo CD`: Manages production deployments with progressive rollout strategies
+
+#### Key Benefits
+
++ `Booking System Reliability`: Zero-downtime deployments ensure 24/7 availability
+
++ `Payment Security`: Automated PCI scans before each release
+
++ `Rapid Experimentation`: Test new features like dynamic pricing with controlled rollouts
+
++ `Incident Response`: Automatic rollback if error rates exceed thresholds
+
++ `Team Efficiency`: Reduces release process from days to minutes
