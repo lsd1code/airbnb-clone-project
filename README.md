@@ -135,14 +135,63 @@ This schema supports core platform operations including property search, booking
 
 1. API Documentation
 
++ `OpenAPI Standard`: The backend APIs are documented using OpenAPI standard to ensure clarity and ease of integration 
++ `Django REST Framework`: Provides a comprehensive RESTful API for handling CRUD operations on user and property data 
+
 2. User Authentication
+
++ Able to register new users, authenticate, and manage user profiles
++ Includes role-based access control for guests, hosts, and administrators
 
 3. Property Management
 
++ Allows hosts to create, update, and manage property listings with photos, descriptions, pricing, and availability calendars. Supports amenity configuration and dynamic pricing rules
++ Enables hosts to effectively market their properties while providing guests with comprehensive information for booking decisions
+
 4. Booking System
+
++ Manages the end-to-end reservation process including availability checks, date selection, pricing calculations, and instant booking confirmations
++ Make, update, and manage bookings, including check-in and check-out details
 
 5. Payment Processing
 
++ Securely handles transactions with multiple payment methods, processes refunds, and manages payout schedules to hosts
++ Handle payment transactions related to bookings
+
 6. Review System
 
++ Enables two-way reviews where guests rate properties and hosts rate guests, and includes moderation tools and displays aggregate scores on property listings
++ Builds trust through transparent feedback from previous stays. The dual-review system maintains accountability for both guests and hosts, improving overall platform quality
+
 7. Database Optimizations
+
++ `Indexing`: Implement indexes for fast retrieval of frequently accessed data
++ `Caching`: Use caching strategies to reduce database load and improve performance
+
+
+## API Security 🔐
+
+1. Authentication and Authorization
+
++ JWT-based authentication with OAuth 2.0 flows. Role-based access control (RBAC) with granular permissions
++ Prevents unauthorized access to user accounts and sensitive operations, and ensure hosts can only manage their own properties and guests can only access their own booking history
+
+2. Input validation and Sanitization
+
++ Strict schema validation for all API payloads using JSON Schema, and use parameterized queries to prevent SQL injection
++ Blocks injection attacks and malformed data that could compromise database integrity, it is essential for payment processing where malformed inputs could trigger financial errors
+
+3. Rate limiting and Throttling
+
++ Redis-backed rate limiting (maybe 100 req/minute per IP), and utilize progressive delays for abusive clients
++ Prevents brute force attacks on authentication endpoints and protects against DDoS attempts that could take down booking availability services during peak times
+
+4. Encryption and Data protection
+
++ HTTPS with HSTS enforcement. AES-256 encryption for sensitive data at rest. TLS 1.3 for all communications
++ Protects payment details and PII during transmission. Meets PCI-DSS requirements for financial transactions and GDPR requirements for user data privacy
+
+5. Payment processing and Booking system
+
++ Direct financial impact. Insecure payments expose credit card details, enable fraudulent transactions, and violate PCI compliance - risking massive fines and loss of payment processing privileges
++ Manipulation of booking data could enable reservation fraud, double-booking scams, or service denials, we ensure booking integrity and accurate financial settlements
