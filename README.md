@@ -114,7 +114,7 @@ Relationships:
   + Associated with one booking
   + Processed by one payment gateway (external service)
   
-5. Locations
+6. Locations
 
 Geospatial data for properties
 
@@ -130,3 +130,19 @@ Relationships:
   + One-to-one relationship with Properties 
 
 This schema supports core platform operations including property search, booking flow, payment processing, and review systems while maintaining data constancy and performance   
+
+## Feature BreakDown 🧰
+
+1. API Documentation
+
+2. User Authentication
+
+3. Property Management
+
+4. Booking System
+
+5. Payment Processing
+
+6. Review System
+
+7. Database Optimizations
